@@ -21,10 +21,7 @@ class Root extends React.Component {
   render() {
     return this.state.currentUser ? (
       <UserContext.Provider value={this.state.currentUser}>
-        <MainPage
-          currentUser={this.state.currentUser}
-          onLogout={this.handleLogout}
-        />
+        <MainPage onLogout={this.handleLogout} />
       </UserContext.Provider>
     ) : (
       <LoginPage onLogin={this.handleLogin} />
