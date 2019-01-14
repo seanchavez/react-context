@@ -1,8 +1,9 @@
 import React from 'react';
+import UserContext from './UseContext';
 
 class UserMenu extends React.Component {
   state = {
-    menuVisible: false
+    menuVisible: false,
   };
 
   avatarRef = React.createRef();
@@ -25,16 +26,16 @@ class UserMenu extends React.Component {
 
   toggleMenu = () => {
     this.setState(state => ({
-      menuVisible: !state.menuVisible
+      menuVisible: !state.menuVisible,
     }));
   };
 
   render() {
     return (
-      <div className="UserMenu">
+      <div className='UserMenu'>
         <img
-          className="UserAvatar"
-          alt="User avatar"
+          className='UserAvatar'
+          alt='User avatar'
           src={this.props.currentUser.avatar}
           onClick={this.toggleMenu}
           ref={this.avatarRef}
