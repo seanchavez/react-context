@@ -28,12 +28,12 @@ class Root extends React.Component {
         }}
       >
         {this.state.currentUser ? (
-          <MainPage onLogout={this.handleLogout} />
+          <MainPage />
         ) : (
           <LoginPage onLogin={this.handleLogin} />
         )}
       </UserContext.Provider>
-    )
+    );
   }
 }
 
