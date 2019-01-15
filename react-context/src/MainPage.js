@@ -2,10 +2,10 @@ import React from 'react';
 import Header from './Header';
 import MessageList from './MessageList';
 
-const MainPage = ({ currentUser, onLogout }) => (
+const MainPage = () => (
   <main>
-    <Header  onLogout={onLogout} />
-    <MessageList  />
+    <Header />
+    <MessageList />
   </main>
 );
 
