@@ -28,7 +28,7 @@ class LoginPage extends React.Component {
   };
 
   render() {
-    const { username, password, error, loading } = this.state;
+    const { username, password, error, loadin } = this.state;
 
     return (
       <UserContext.Consumer>
