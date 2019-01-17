@@ -1,5 +1,5 @@
 import React from 'react';
-import UserConsumer from './UserContext';
+import { UserConsumer } from './UserContext';
 
 const MessageList = () => (
   <UserConsumer>
