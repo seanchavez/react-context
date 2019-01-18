@@ -1,7 +1,9 @@
 import React from 'react';
-import { UserConsumer } from './UserContext';
+import { UserContext } from './UserContext';
 
 class UserMenu extends React.Component {
+  static contextType = UserContext;
+
   state = {
     menuVisible: false,
   };
@@ -31,9 +33,9 @@ class UserMenu extends React.Component {
   };
 
   render() {
+    const { user, onLogout } = this.context;
     return (
-      <UserConsumer>
-        {({ user, onLogout }) => (
+      
           <div className='UserMenu'>
             <img
               className='UserAvatar'
@@ -48,8 +50,9 @@ class UserMenu extends React.Component {
               </ul>
             )}
           </div>
+            
         )}
-      </UserConsumer>
+      
     );
   }
 }
