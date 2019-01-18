@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchEmails, fetchLatestEmails } from './api';
+import { withNotifier } from './NotificationContext';
 
 const { Provider, Consumer } = React.createContext();
 
@@ -30,6 +31,7 @@ class EmailProvider extends React.Component {
           this.setState(state => ({
             emails: state.emails.concat(emails),
           }));
+          this.props.notify(`${emails.length} more emails arrived`);
         }
       });
     }
@@ -53,4 +55,6 @@ class EmailProvider extends React.Component {
   }
 }
 
-export { EmailProvider, Consumer as EmailConsumer };
+const Wrapped = withNotifier(EmailProvider);
+
+export { Wrapped as EmailProvider, Consumer as EmailConsumer };

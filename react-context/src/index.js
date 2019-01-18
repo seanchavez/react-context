@@ -4,6 +4,7 @@ import LoginPage from './LoginPage';
 import MainPage from './MainPage';
 import { UserProvider, UserConsumer } from './UserContext';
 import { EmailProvider } from './EmailContext';
+import { NotificationProvider } from 'NotificationContext';
 import './index.css';
 
 const Root = () => {
@@ -17,10 +18,12 @@ const Root = () => {
 };
 
 ReactDOM.render(
-  <UserProvider>
-    <EmailProvider>
-      <Root />
-    </EmailProvider>
-  </UserProvider>,
+  <NotificationProvider>
+    <UserProvider>
+      <EmailProvider>
+        <Root />
+      </EmailProvider>
+    </UserProvider>
+  </NotificationProvider>,
   document.querySelector('#root'),
 );
