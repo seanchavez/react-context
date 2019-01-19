@@ -1,38 +1,33 @@
-import React, {useContext} from 'react';
-import { UserConsumer } from './UserContext';
-import { EmailConsumer } from './EmailContext';
+import React, { useContext } from 'react';
+import { UserContext } from './UserContext';
+import { EmailContext } from './EmailContext';
 
-const MessageList = () => (
-  const {user} = useContext(UserContext);
-  const {loading, emails, onSelectEmail} = useContext(EmailContext)
-  <UserConsumer>
-    {({ user }) => (
-      <EmailConsumer>
-        {({ loading, emails, onSelectEmail }) => (
-          <div className='MessageList'>
-            {loading ? (
-              <div className='no-messages'>Loading...</div>
-            ) : emails.length === 0 ? (
-              <div className='no-messages'>
-                Your mailbox is empty, {user.firstName}! 🎉
-              </div>
-            ) : (
-              <ul>
-                {emails.map(email => (
-                  <Email
-                    key={email.id}
-                    email={email}
-                    onClick={() => onSelectEmail(email)}
-                  />
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
-      </EmailConsumer>
-    )}
-  </UserConsumer>
-);
+const MessageList = () => {
+  const { user } = useContext(UserContext);
+  const { loading, emails, onSelectEmail } = useContext(EmailContext);
+
+  return (
+    <div className='MessageList'>
+      {loading ? (
+        <div className='no-messages'>Loading...</div>
+      ) : emails.length === 0 ? (
+        <div className='no-messages'>
+          Your mailbox is empty, {user.firstName}! 🎉
+        </div>
+      ) : (
+        <ul>
+          {emails.map(email => (
+            <Email
+              key={email.id}
+              email={email}
+              onClick={() => onSelectEmail(email)}
+            />
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 const Email = ({ email, onClick }) => (
   <li onClick={onClick}>
@@ -40,5 +35,4 @@ const Email = ({ email, onClick }) => (
     <div className='preview'>{email.preview}</div>
   </li>
 );
-
 export default MessageList;
