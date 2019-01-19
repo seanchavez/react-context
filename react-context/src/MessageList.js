@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { UserConsumer } from './UserContext';
 import { EmailConsumer } from './EmailContext';
 
 const MessageList = () => (
+  const {user} = useContext(UserContext);
+  const {loading, emails, onSelectEmail} = useContext(EmailContext)
   <UserConsumer>
     {({ user }) => (
       <EmailConsumer>
